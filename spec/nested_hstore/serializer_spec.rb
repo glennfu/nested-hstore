@@ -24,11 +24,13 @@ describe NestedHstore::Serializer do
         },
         'e' => {
           'f' => 'String 3'
-        }
+        },
+        'h' => false
       }
       @serialized = {
        "a"=>"{\"b\":{\"c\":\"String 1\",\"d\":\"String 2\"}}",
        "e"=>"{\"f\":\"String 3\"}",
+       "h"=>false
       }
     end
 
@@ -84,7 +86,7 @@ describe NestedHstore::Serializer do
        "__TYPE__"=>"__ARRAY__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -106,7 +108,7 @@ describe NestedHstore::Serializer do
        "__TYPE__"=>"__ARRAY__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -135,7 +137,7 @@ describe NestedHstore::Serializer do
        "__TYPE__"=>"__ARRAY__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -149,11 +151,11 @@ describe NestedHstore::Serializer do
     before do
       @deserialized = true
       @serialized = {
-       "__VALUE__"=>"true",
+       "__VALUE__"=>true,
        "__TYPE__"=>"__BOOLEAN__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -167,11 +169,11 @@ describe NestedHstore::Serializer do
     before do
       @deserialized = false
       @serialized = {
-       "__VALUE__"=>"false",
+       "__VALUE__"=>false,
        "__TYPE__"=>"__BOOLEAN__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -189,7 +191,7 @@ describe NestedHstore::Serializer do
        "__TYPE__"=>"__FLOAT__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -207,7 +209,7 @@ describe NestedHstore::Serializer do
        "__TYPE__"=>"__INTEGER__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end
@@ -225,7 +227,7 @@ describe NestedHstore::Serializer do
        "__TYPE__"=>"__STRING__"
       }
     end
-    
+
     describe '#serialize' do
       it('serializes') { it_serializes }
     end

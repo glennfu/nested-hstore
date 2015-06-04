@@ -50,7 +50,7 @@ module NestedHstore
         when :array
           hash.values.map { |v| decode_json_if_json(v) }
         when :boolean
-          hash[@value_key] == 'true'
+          hash[@value_key]
         when :float
           hash[@value_key].to_f
         when :integer
@@ -70,13 +70,13 @@ module NestedHstore
 
     def hash_to_hstore(type, hash)
       return {} if type == :hash && hash.blank?
-      
+
       hstore = hash.dup
       hstore.each do |k, v|
         if v.is_a?(Array) || v.is_a?(Hash)
           hstore[k] = encode_json(v)
         else
-          hstore[k] = v.to_s
+          hstore[k] = v.to_s unless v.is_a?(TrueClass) || v.is_a?(FalseClass)
         end
       end
 
